@@ -1,0 +1,5 @@
+node_modules/
+.env
+API.md
+schema.md
+package-lock.json
