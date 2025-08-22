@@ -7,6 +7,7 @@ const defectSchema = new mongoose.Schema({
   description: { type: String, required: true },
   status: { type: String },
   priority: { type: String },
+  steps_to_reproduce: {type: String},
   assigned_to_user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   reported_by_user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
   date_reported: { type: Date, default: Date.now }
