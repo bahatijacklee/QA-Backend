@@ -8,6 +8,7 @@ const testCaseSchema = new mongoose.Schema({
   preconditions: { type: String },
   test_steps: { type: String },
   test_data: { type: String },
+  test_suite: {type: String},
   expected_results: { type: String },
   actual_results: { type: String },
   status: { type: String },
@@ -16,7 +17,7 @@ const testCaseSchema = new mongoose.Schema({
   execution_date: { type: Date },
   remarks: { type: String },
   written_by_user_id: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-  related_requirement_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Requirement' },
+  link_to_testplan: { type: String },
   defect_ids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Defect' }]
 }, { timestamps: true });
 
