@@ -7,8 +7,10 @@ const userSchema = new mongoose.Schema({
   phone_number: {type: String},
   role: { type: String, enum: ['Tester', 'Lead', 'Admin'], default: 'Tester' },
   isVerified: { type: Boolean, default: false },
-  verificationToken: { type: String },
-  verificationTokenExpires: { type: Date }
+  resetPasswordToken: String,
+	resetPasswordExpiresAt: Date,
+	verificationToken: String,
+	verificationTokenExpiresAt: Date,
 }, { timestamps: true });
 
 module.exports = mongoose.model('User', userSchema);

@@ -1,21 +1,32 @@
-const nodemailer = require('nodemailer');
+const Nodemailer = require("nodemailer");
+const { MailtrapTransport } = require("mailtrap");
 
-const sendEmail = async (to, subject, html) => {
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    secure: false,
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  });
-  await transporter.sendMail({
-    from: process.env.SMTP_FROM,
-    to,
-    subject,
-    html,
-  });
+const TOKEN = process.env.MAILTRAP_TOKEN;
+
+const transport = Nodemailer.createTransport(
+	MailtrapTransport({
+		token: TOKEN,
+	})
+);
+
+/**
+ * Send an email using Mailtrap API
+ * @param {Object} options - { to, subject, text, html, fromName, fromAddress }
+ */
+const sendEmail = async ({ to, subject, text, html, fromName, fromAddress }) => {
+	const sender = {
+		address: fromAddress || "hello@demomailtrap.co",
+		name: fromName || "QA Dashboard",
+	};
+	const recipients = Array.isArray(to) ? to : [to];
+	await transport.sendMail({
+		from: sender,
+		to: recipients,
+		subject,
+		text,
+		html,
+		category: "Transactional",
+	});
 };
 
 module.exports = sendEmail;
