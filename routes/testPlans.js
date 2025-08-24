@@ -7,7 +7,7 @@ const {
   updateTestPlan,
   deleteTestPlan
 } = require('../controllers/testPlanController');
-const { protect } = require('../middleware/auth');
+const { protect } = require('../middleware/verifyToken');
 
 router.route('/').get(protect, getTestPlans).post(protect, createTestPlan);
 router.route('/:id').get(protect, getTestPlan).put(protect, updateTestPlan).delete(protect, deleteTestPlan);

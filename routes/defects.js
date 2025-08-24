@@ -5,7 +5,7 @@ const {
   createDefect,
   updateDefectStatus
 } = require('../controllers/defectController');
-const { protect } = require('../middleware/auth');
+const { protect } = require('../middleware/verifyToken');
 
 router.route('/').get(protect, getDefects).post(protect, createDefect);
 router.route('/:id/status').patch(protect, updateDefectStatus);

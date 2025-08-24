@@ -5,7 +5,7 @@ const {
   getUserById,
   updateUserRole
 } = require('../controllers/userController');
-const { protect } = require('../middleware/auth');
+const { protect } = require('../middleware/verifyToken');
 
 router.route('/').get(protect, getUsers);
 router.route('/:id').get(protect, getUserById);
