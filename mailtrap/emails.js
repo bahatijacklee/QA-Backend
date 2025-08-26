@@ -32,10 +32,18 @@ export const sendWelcomeEmail = async (email, name) => {
 		const response = await mailtrapClient.send({
 			from: sender,
 			to: recipient,
-			template_uuid: "e65925d1-a9d1-4a40-ae7c-d92b37d593df",
+			template_uuid: process.env.TEMPLATE_UUID,
 			template_variables: {
 				company_info_name: " QA Management ",
 				name: name,
+				city: "Nairobi",
+				company_info_country: "Kenya",
+				company_info_email: "info@qamanagement.com",
+				company_info_phone: "+254 700 000 000",
+				company_info_website: "www.qamanagement.com",
+				company_info_address: "123 QA St, Nairobi, Kenya",
+				company_info_zip_code: "00100",
+
 			},
 		});
 
