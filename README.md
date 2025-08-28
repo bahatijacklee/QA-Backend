@@ -1,6 +1,6 @@
  # TestCloud Backend
 
-![TestCloud Banner](https://via.placeholder.com/1200x300.png?text=TestCloud+Backend+API)
+![TestCloud Banner](./assets/banner.png)
 
 ![Node.js](https://img.shields.io/badge/Node.js-18.x-green?style=for-the-badge&logo=node.js)
 ![Express.js](https://img.shields.io/badge/Express.js-4.x-black?style=for-the-badge&logo=express)
@@ -150,7 +150,7 @@ postman/QA-Backend-Auth-API.postman_collection.json
 
 ## 📜 License
 
-This project is licensed under the [Apache 2.0 License](LICENSE).  
+This project is licensed under the [Apache 2.0 License](LICENSE)  
 See [NOTICE](NOTICE) for attribution.
 
 ---
