@@ -150,7 +150,7 @@ postman/QA-Backend-Auth-API.postman_collection.json
 
 ## 📜 License
 
-This project is licensed under the [Apache 2.0 License](LICENSE)  
+This project is licensed under the [Apache 2.0 License](LICENSE). 
 See [NOTICE](NOTICE) for attribution.
 
 ---
