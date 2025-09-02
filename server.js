@@ -20,6 +20,7 @@ app.use('/api/testplans', require('./routes/testPlans'));
 app.use('/api/testcases', require('./routes/testCases'));
 app.use('/api/defects', require('./routes/defects'));
 app.use('/api/users', require('./routes/users'));
+app.use('/api/projects', require('./routes/project'));
 
 // Error handler (last)
 app.use(errorHandler);
