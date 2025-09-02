@@ -3,3 +3,9 @@ node_modules/
 API.md
 schema.md
 package-lock.json
+
+
+*~*
+.envbackup
+todo
+test
