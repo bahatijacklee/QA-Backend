@@ -1,0 +1,102 @@
+{
+  "info": {
+    "_postman_id": "testcase-execution-collection-2025-09-03",
+    "name": "TestCaseExecution-API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman collection for TestCaseExecution (Test Suite Execution) endpoints. Requires authentication."
+  },
+  "item": [
+    {
+      "name": "Get All Test Suite Executions (by Project)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/testcase-execution?project_id={{project_id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "testcase-execution"],
+          "query": [
+            { "key": "project_id", "value": "{{project_id}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Single Test Suite Execution",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/testcase-execution/{{suite_id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "testcase-execution", "{{suite_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Create Test Suite Execution",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"test_suite_name\": \"Regression Suite\",\n  \"project_id\": \"{{project_id}}\",\n  \"status\": \"In Progress\",\n  \"start_date\": \"2025-09-03T10:00:00Z\",\n  \"end_date\": \"\",\n  \"bug_id\": \"\",\n  \"executed_by\": \"QA Tester\",\n  \"executed_date\": \"2025-09-03\",\n  \"assigned_to_user_id\": \"{{user_id}}\",\n  \"remarks\": \"Initial run\",\n  \"test_case_ids\": [\"{{testcase_id1}}\", \"{{testcase_id2}}\"]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/testcase-execution",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "testcase-execution"]
+        }
+      }
+    },
+    {
+      "name": "Update Test Suite Execution",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Passed\",\n  \"end_date\": \"2025-09-03T12:00:00Z\",\n  \"remarks\": \"All tests passed\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/testcase-execution/{{suite_id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "testcase-execution", "{{suite_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Delete Test Suite Execution",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/testcase-execution/{{suite_id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "testcase-execution", "{{suite_id}}"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "jwt", "value": "" },
+    { "key": "project_id", "value": "" },
+    { "key": "suite_id", "value": "" },
+    { "key": "user_id", "value": "" },
+    { "key": "testcase_id1", "value": "" },
+    { "key": "testcase_id2", "value": "" }
+  ]
+}

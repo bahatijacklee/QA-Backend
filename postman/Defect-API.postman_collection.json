@@ -1,0 +1,119 @@
+{
+  "info": {
+    "_postman_id": "defect-api-collection-2025-09-03",
+    "name": "Defect-API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman collection for Defect (Bug Tracking) API endpoints. Requires authentication."
+  },
+  "item": [
+    {
+      "name": "Get All Defects (optionally by Test Case)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/defects?test_case_id={{test_case_id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "defects"],
+          "query": [
+            { "key": "test_case_id", "value": "{{test_case_id}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Single Defect",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/defects/{{defect_id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "defects", "{{defect_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Create Defect",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"test_case_id\": \"{{test_case_id}}\",\n  \"title\": \"Login button not working\",\n  \"description\": \"The login button does not respond on click.\",\n  \"status\": \"Open\",\n  \"priority\": \"High\",\n  \"severity\": \"Critical\",\n  \"steps_to_reproduce\": \"Go to login page, enter credentials, click login.\",\n  \"expected_result\": \"User should be logged in.\",\n  \"actual_result\": \"Nothing happens.\",\n  \"attachments\": \"\",\n  \"environment\": \"Staging\",\n  \"assigned_to_user_id\": \"{{user_id}}\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/defects",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "defects"]
+        }
+      }
+    },
+    {
+      "name": "Update Defect (Full)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"In Progress\",\n  \"priority\": \"Medium\",\n  \"remarks\": \"Being investigated\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/defects/{{defect_id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "defects", "{{defect_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Update Defect Status (PATCH)",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Closed\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/defects/{{defect_id}}/status",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "defects", "{{defect_id}}", "status"]
+        }
+      }
+    },
+    {
+      "name": "Delete Defect",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/defects/{{defect_id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "defects", "{{defect_id}}"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "jwt", "value": "" },
+    { "key": "test_case_id", "value": "" },
+    { "key": "defect_id", "value": "" },
+    { "key": "user_id", "value": "" }
+  ]
+}

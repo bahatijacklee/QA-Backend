@@ -1,6 +1,48 @@
 const asyncHandler = require('express-async-handler');
 const Defect = require('../models/Defect');
 
+// @desc    Get a single defect
+// @route   GET /api/defects/:id
+// @access  Private
+const getDefect = asyncHandler(async (req, res) => {
+  const defect = await Defect.findById(req.params.id)
+    .populate('test_case_id', 'test_case_id title')
+    .populate('reported_by_user_id', 'username email')
+    .populate('assigned_to_user_id', 'username email');
+  if (!defect) {
+    res.status(404);
+    throw new Error('Defect not found');
+  }
+  res.json(defect);
+});
+
+// @desc    Update a defect (full update)
+// @route   PUT /api/defects/:id
+// @access  Private
+const updateDefect = asyncHandler(async (req, res) => {
+  const defect = await Defect.findById(req.params.id);
+  if (!defect) {
+    res.status(404);
+    throw new Error('Defect not found');
+  }
+  Object.assign(defect, req.body);
+  await defect.save();
+  res.json(defect);
+});
+
+// @desc    Delete a defect
+// @route   DELETE /api/defects/:id
+// @access  Private
+const deleteDefect = asyncHandler(async (req, res) => {
+  const defect = await Defect.findById(req.params.id);
+  if (!defect) {
+    res.status(404);
+    throw new Error('Defect not found');
+  }
+  await defect.remove();
+  res.json({ message: 'Defect deleted' });
+});
+
 // @desc    Get all defects
 // @route   GET /api/defects
 // @access  Private
@@ -56,4 +98,7 @@ module.exports = {
   getDefects,
   createDefect,
   updateDefectStatus,
+  getDefect,
+  updateDefect,
+  deleteDefect,
 };

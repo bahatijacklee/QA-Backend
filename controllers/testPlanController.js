@@ -5,11 +5,13 @@ const Project = require('../models/Project');
 // @desc    Get all test plans
 // @route   GET /api/testplans
 // @access  Private
-// Optionally filter by project_id
+// Optionally filter by project (now ObjectId reference)
 const getTestPlans = asyncHandler(async (req, res) => {
-  const { project_id } = req.query;
-  const filter = project_id ? { project_id } : {};
-  const plans = await TestPlan.find(filter).populate('project_id', 'project_name').populate('uploaded_by_user_id', 'username email');
+  const { project } = req.query;
+  const filter = project ? { project } : {};
+  const plans = await TestPlan.find(filter)
+    .populate('project', 'project_name')
+    .populate('uploadedBy', 'username email');
   res.json(plans);
 });
 
@@ -17,7 +19,9 @@ const getTestPlans = asyncHandler(async (req, res) => {
 // @route   GET /api/testplans/:id
 // @access  Private
 const getTestPlan = asyncHandler(async (req, res) => {
-  const plan = await TestPlan.findById(req.params.id).populate('uploadedBy', 'username email');
+  const plan = await TestPlan.findById(req.params.id)
+    .populate('project', 'project_name')
+    .populate('uploadedBy', 'username email');
   if (!plan) {
     res.status(404);
     throw new Error('Test plan not found');
@@ -29,23 +33,23 @@ const getTestPlan = asyncHandler(async (req, res) => {
 // @route   POST /api/testplans
 // @access  Private
 const createTestPlan = asyncHandler(async (req, res) => {
-  const { test_plan_name, project_id, expected_start_date, expected_end_date, description, status } = req.body;
-  if (!test_plan_name || !project_id) {
+  const { title, description, project, link, startDate, endDate, status } = req.body;
+  if (!title || !project) {
     res.status(400);
-    throw new Error('Test plan name and project are required');
+    throw new Error('Test plan title and project are required');
   }
   const plan = await TestPlan.create({
-    test_plan_name,
-    project_id,
-    expected_start_date,
-    expected_end_date,
+    title,
     description,
+    project,
+    link,
+    startDate,
+    endDate,
     status,
-    uploaded_by_user_id: req.user._id,
-    uploaded_on: new Date()
+    uploadedBy: req.user._id
   });
   // Add to project
-  await Project.findByIdAndUpdate(project_id, { $push: { test_plan_ids: plan._id } });
+  await Project.findByIdAndUpdate(project, { $push: { test_plan_ids: plan._id } });
   res.status(201).json(plan);
 });
 
@@ -62,7 +66,8 @@ const updateTestPlan = asyncHandler(async (req, res) => {
     res.status(403);
     throw new Error('Not authorized to update this test plan');
   }
-  const updated = await TestPlan.findByIdAndUpdate(req.params.id, req.body, { new: true });
+  const updateFields = (({ title, description, project, link, startDate, endDate, status }) => ({ title, description, project, link, startDate, endDate, status }))(req.body);
+  const updated = await TestPlan.findByIdAndUpdate(req.params.id, updateFields, { new: true });
   res.json(updated);
 });
 
@@ -79,6 +84,8 @@ const deleteTestPlan = asyncHandler(async (req, res) => {
     res.status(403);
     throw new Error('Not authorized to delete this test plan');
   }
+  // Remove from project
+  await Project.findByIdAndUpdate(plan.project, { $pull: { test_plan_ids: plan._id } });
   await plan.remove();
   res.json({ message: 'Test plan removed' });
 });

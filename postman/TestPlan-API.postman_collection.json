@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "QA Dashboard Project API",
-    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-    "description": "Test Project CRUD endpoints",
+    "name": "QA Dashboard TestPlan API",
+    "_postman_id": "b2c3d4e5-f6a1-7890-abcd-ef1234567890",
+    "description": "Test TestPlan CRUD endpoints with project relationship.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -42,7 +42,7 @@
       ]
     },
     {
-      "name": "Create Project",
+      "name": "Create TestPlan",
       "request": {
         "method": "POST",
         "header": [
@@ -51,51 +51,53 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"project_name\": \"My First Project\",\n  \"start_date\": \"2025-09-01\",\n  \"end_date\": \"2025-12-31\",\n  \"test_plan_ids\": [\"<test_plan_id>\"]\n}\n// Note: test_plan_ids should be an array of TestPlan ObjectIds. Leave empty or add valid IDs."
+          "raw": "{\n  \"title\": \"Regression Plan\",\n  \"description\": \"Covers all regression cases\",\n  \"project\": \"<project_id>\",\n  \"link\": \"https://docs.example.com/plan\",\n  \"startDate\": \"2025-09-01\",\n  \"endDate\": \"2025-09-30\",\n  \"status\": \"Draft\"\n}"
         },
         "url": {
-          "raw": "http://localhost:5000/api/projects",
+          "raw": "http://localhost:5000/api/testplans",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
-          "path": ["api", "projects"]
+          "path": ["api", "testplans"]
         }
       }
     },
     {
-      "name": "Get All Projects",
+      "name": "Get All TestPlans",
       "request": {
         "method": "GET",
         "header": [
+          { "key": "Content-Type", "value": "application/json" },
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/projects",
+          "raw": "http://localhost:5000/api/testplans",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
-          "path": ["api", "projects"]
+          "path": ["api", "testplans"]
         }
       }
     },
     {
-      "name": "Get Project By ID",
+      "name": "Get TestPlan By ID",
       "request": {
         "method": "GET",
         "header": [
+          { "key": "Content-Type", "value": "application/json" },
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/projects/:id",
+          "raw": "http://localhost:5000/api/testplans/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
-          "path": ["api", "projects", ":id"]
+          "path": ["api", "testplans", ":id"]
         }
       }
     },
     {
-      "name": "Update Project",
+      "name": "Update TestPlan",
       "request": {
         "method": "PUT",
         "header": [
@@ -104,30 +106,31 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"project_name\": \"Updated Project\",\n  \"start_date\": \"2025-10-01\",\n  \"end_date\": \"2025-12-31\",\n  \"test_plan_ids\": [\"<test_plan_id>\"]\n}\n// Note: test_plan_ids should be an array of TestPlan ObjectIds."
+          "raw": "{\n  \"title\": \"Updated Plan\",\n  \"description\": \"Updated description\",\n  \"project\": \"<project_id>\",\n  \"link\": \"https://docs.example.com/plan-updated\",\n  \"startDate\": \"2025-09-05\",\n  \"endDate\": \"2025-09-30\",\n  \"status\": \"In Progress\"\n}"
         },
         "url": {
-          "raw": "http://localhost:5000/api/projects/:id",
+          "raw": "http://localhost:5000/api/testplans/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
-          "path": ["api", "projects", ":id"]
+          "path": ["api", "testplans", ":id"]
         }
       }
     },
     {
-      "name": "Delete Project",
+      "name": "Delete TestPlan",
       "request": {
         "method": "DELETE",
         "header": [
+          { "key": "Content-Type", "value": "application/json" },
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/projects/:id",
+          "raw": "http://localhost:5000/api/testplans/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
-          "path": ["api", "projects", ":id"]
+          "path": ["api", "testplans", ":id"]
         }
       }
     }

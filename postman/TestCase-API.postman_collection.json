@@ -1,0 +1,117 @@
+{
+  "info": {
+    "_postman_id": "testcases-collection-2025-09-03",
+    "name": "TestCase-API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Postman collection for TestCase endpoints. Requires authentication."
+  },
+  "item": [
+    {
+      "name": "Get All Test Cases (by Test Plan)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/testcases?test_plan_id={{test_plan_id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "testcases"],
+          "query": [
+            { "key": "test_plan_id", "value": "{{test_plan_id}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Test Cases (by Requirement)",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/testcases?requirement_id={{requirement_id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "testcases"],
+          "query": [
+            { "key": "requirement_id", "value": "{{requirement_id}}" }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Single Test Case",
+      "request": {
+        "method": "GET",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/testcases/{{testcase_id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "testcases", "{{testcase_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Create Test Case",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"test_plan_id\": \"{{test_plan_id}}\",\n  \"requirement_id\": \"{{requirement_id}}\",\n  \"title\": \"Login with valid credentials\",\n  \"preconditions\": \"User is on login page\",\n  \"test_steps\": [\"Enter username\", \"Enter password\", \"Click login\"],\n  \"test_data\": \"username: test, password: test123\",\n  \"expected_results\": \"User is logged in\",\n  \"actual_results\": \"\",\n  \"status\": \"Not Executed\",\n  \"test_type\": \"Functional\",\n  \"executed_by_user_id\": \"\",\n  \"execution_date\": \"\",\n  \"remarks\": \"\",\n  \"written_by_user_id\": \"\",\n  \"defect_ids\": []\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/testcases",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "testcases"]
+        }
+      }
+    },
+    {
+      "name": "Update Test Case",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" },
+          { "key": "Content-Type", "value": "application/json", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"Login with valid credentials - updated\",\n  \"status\": \"Passed\",\n  \"actual_results\": \"User successfully logged in\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/api/testcases/{{testcase_id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "testcases", "{{testcase_id}}"]
+        }
+      }
+    },
+    {
+      "name": "Delete Test Case",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          { "key": "Authorization", "value": "Bearer {{jwt}}", "type": "text" }
+        ],
+        "url": {
+          "raw": "{{baseUrl}}/api/testcases/{{testcase_id}}",
+          "host": ["{{baseUrl}}"],
+          "path": ["api", "testcases", "{{testcase_id}}"]
+        }
+      }
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "jwt", "value": "" },
+    { "key": "test_plan_id", "value": "" },
+    { "key": "requirement_id", "value": "" },
+    { "key": "testcase_id", "value": "" }
+  ]
+}

@@ -16,4 +16,4 @@ const testCaseExecution = new mongoose.Schema({
   test_case_ids: [{ type: mongoose.Schema.Types.ObjectId, ref: 'TestCase' }]
 }, { timestamps: true });
 
-module.exports = mongoose.model('TestSuite', testCaseExecution);
+module.exports = mongoose.models.TestCaseExecution || mongoose.model('TestCaseExecution', testCaseExecution);

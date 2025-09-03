@@ -1,8 +1,8 @@
 {
   "info": {
-    "name": "QA Dashboard Project API",
-    "_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
-    "description": "Test Project CRUD endpoints",
+    "name": "QA Dashboard RTM API",
+    "_postman_id": "c3d4e5f6-a1b2-7890-abcd-ef1234567890",
+    "description": "Test Requirement Traceability Matrix (RTM) endpoints related to TestPlan.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
@@ -42,7 +42,7 @@
       ]
     },
     {
-      "name": "Create Project",
+      "name": "Create Requirement (RTM Entry)",
       "request": {
         "method": "POST",
         "header": [
@@ -51,51 +51,51 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"project_name\": \"My First Project\",\n  \"start_date\": \"2025-09-01\",\n  \"end_date\": \"2025-12-31\",\n  \"test_plan_ids\": [\"<test_plan_id>\"]\n}\n// Note: test_plan_ids should be an array of TestPlan ObjectIds. Leave empty or add valid IDs."
+          "raw": "{\n  \"reqId\": \"REQ-001\",\n  \"description\": \"Login must support SSO\",\n  \"testPlan\": \"<testplan_id>\",\n  \"mainFeature\": \"Authentication\",\n  \"featureSubsection\": \"SSO\",\n  \"remarks\": \"Critical\",\n  \"testStatus\": \"Pass\",\n  \"testcaseIds\": \"TC-001,TC-002\"\n}"
         },
         "url": {
-          "raw": "http://localhost:5000/api/projects",
+          "raw": "http://localhost:5000/api/requirements",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
-          "path": ["api", "projects"]
+          "path": ["api", "requirements"]
         }
       }
     },
     {
-      "name": "Get All Projects",
+      "name": "Get All Requirements for TestPlan (RTM)",
       "request": {
         "method": "GET",
         "header": [
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/projects",
+          "raw": "http://localhost:5000/api/requirements/testplan/<testplan_id>",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
-          "path": ["api", "projects"]
+          "path": ["api", "requirements", "testplan", "<testplan_id>"]
         }
       }
     },
     {
-      "name": "Get Project By ID",
+      "name": "Get Requirement By ID",
       "request": {
         "method": "GET",
         "header": [
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/projects/:id",
+          "raw": "http://localhost:5000/api/requirements/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
-          "path": ["api", "projects", ":id"]
+          "path": ["api", "requirements", ":id"]
         }
       }
     },
     {
-      "name": "Update Project",
+      "name": "Update Requirement",
       "request": {
         "method": "PUT",
         "header": [
@@ -104,30 +104,30 @@
         ],
         "body": {
           "mode": "raw",
-          "raw": "{\n  \"project_name\": \"Updated Project\",\n  \"start_date\": \"2025-10-01\",\n  \"end_date\": \"2025-12-31\",\n  \"test_plan_ids\": [\"<test_plan_id>\"]\n}\n// Note: test_plan_ids should be an array of TestPlan ObjectIds."
+          "raw": "{\n  \"description\": \"Updated description\",\n  \"testStatus\": \"Fail\"\n}"
         },
         "url": {
-          "raw": "http://localhost:5000/api/projects/:id",
+          "raw": "http://localhost:5000/api/requirements/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
-          "path": ["api", "projects", ":id"]
+          "path": ["api", "requirements", ":id"]
         }
       }
     },
     {
-      "name": "Delete Project",
+      "name": "Delete Requirement",
       "request": {
         "method": "DELETE",
         "header": [
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/projects/:id",
+          "raw": "http://localhost:5000/api/requirements/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
-          "path": ["api", "projects", ":id"]
+          "path": ["api", "requirements", ":id"]
         }
       }
     }
