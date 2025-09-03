@@ -7,8 +7,10 @@ const requirementSchema = new mongoose.Schema({
   mainFeature: {type: String},
   featureSubsection: {type: String},
   remarks: {type: String},
+  status: {type: String},
   testStatus: {type: String, enum: ["Pass", "Fail"]},
   testcaseIds: {type: String},
+  actions: { type: String},
 }, { timestamps: true });
 
 module.exports = mongoose.model('Requirement', requirementSchema);

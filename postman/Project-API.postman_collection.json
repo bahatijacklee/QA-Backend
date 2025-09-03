@@ -18,7 +18,7 @@
           "raw": "{\n  \"email\": \"testuser@example.com\",\n  \"password\": \"TestPassword123!\"\n}"
         },
         "url": {
-          "raw": "http://localhost:5000/api/auth/login",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/auth/login",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -54,7 +54,7 @@
           "raw": "{\n  \"project_name\": \"My First Project\",\n  \"start_date\": \"2025-09-01\",\n  \"end_date\": \"2025-12-31\",\n  \"test_plan_ids\": [\"<test_plan_id>\"]\n}\n// Note: test_plan_ids should be an array of TestPlan ObjectIds. Leave empty or add valid IDs."
         },
         "url": {
-          "raw": "http://localhost:5000/api/projects",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/projects",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -70,7 +70,7 @@
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/projects",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/projects",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -86,7 +86,7 @@
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/projects/:id",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/projects/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -107,7 +107,7 @@
           "raw": "{\n  \"project_name\": \"Updated Project\",\n  \"start_date\": \"2025-10-01\",\n  \"end_date\": \"2025-12-31\",\n  \"test_plan_ids\": [\"<test_plan_id>\"]\n}\n// Note: test_plan_ids should be an array of TestPlan ObjectIds."
         },
         "url": {
-          "raw": "http://localhost:5000/api/projects/:id",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/projects/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -123,7 +123,7 @@
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/projects/:id",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/projects/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",

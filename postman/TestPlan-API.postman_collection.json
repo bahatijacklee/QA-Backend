@@ -18,7 +18,7 @@
           "raw": "{\n  \"email\": \"testuser@example.com\",\n  \"password\": \"TestPassword123!\"\n}"
         },
         "url": {
-          "raw": "http://localhost:5000/api/auth/login",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/auth/login",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -54,7 +54,7 @@
           "raw": "{\n  \"title\": \"Regression Plan\",\n  \"description\": \"Covers all regression cases\",\n  \"project\": \"<project_id>\",\n  \"link\": \"https://docs.example.com/plan\",\n  \"startDate\": \"2025-09-01\",\n  \"endDate\": \"2025-09-30\",\n  \"status\": \"Draft\"\n}"
         },
         "url": {
-          "raw": "http://localhost:5000/api/testplans",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/testplans",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -71,7 +71,7 @@
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/testplans",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/testplans",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -88,7 +88,7 @@
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/testplans/:id",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/testplans/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -109,7 +109,7 @@
           "raw": "{\n  \"title\": \"Updated Plan\",\n  \"description\": \"Updated description\",\n  \"project\": \"<project_id>\",\n  \"link\": \"https://docs.example.com/plan-updated\",\n  \"startDate\": \"2025-09-05\",\n  \"endDate\": \"2025-09-30\",\n  \"status\": \"In Progress\"\n}"
         },
         "url": {
-          "raw": "http://localhost:5000/api/testplans/:id",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/testplans/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -126,7 +126,7 @@
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/testplans/:id",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/testplans/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",

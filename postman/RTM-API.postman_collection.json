@@ -18,7 +18,7 @@
           "raw": "{\n  \"email\": \"testuser@example.com\",\n  \"password\": \"TestPassword123!\"\n}"
         },
         "url": {
-          "raw": "http://localhost:5000/api/auth/login",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/auth/login",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -54,7 +54,7 @@
           "raw": "{\n  \"reqId\": \"REQ-001\",\n  \"description\": \"Login must support SSO\",\n  \"testPlan\": \"<testplan_id>\",\n  \"mainFeature\": \"Authentication\",\n  \"featureSubsection\": \"SSO\",\n  \"remarks\": \"Critical\",\n  \"testStatus\": \"Pass\",\n  \"testcaseIds\": \"TC-001,TC-002\"\n}"
         },
         "url": {
-          "raw": "http://localhost:5000/api/requirements",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/requirements",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -70,7 +70,7 @@
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/requirements/testplan/<testplan_id>",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/requirements/testplan/<testplan_id>",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -86,7 +86,7 @@
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/requirements/:id",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/requirements/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -107,7 +107,7 @@
           "raw": "{\n  \"description\": \"Updated description\",\n  \"testStatus\": \"Fail\"\n}"
         },
         "url": {
-          "raw": "http://localhost:5000/api/requirements/:id",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/requirements/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",
@@ -123,7 +123,7 @@
           { "key": "Cookie", "value": "{{auth_cookie}}" }
         ],
         "url": {
-          "raw": "http://localhost:5000/api/requirements/:id",
+          "raw": "http://https://qa-backend-fak5.onrender.com/api/requirements/:id",
           "protocol": "http",
           "host": ["localhost"],
           "port": "5000",

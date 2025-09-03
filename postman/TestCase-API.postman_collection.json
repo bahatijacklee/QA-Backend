@@ -108,7 +108,7 @@
     }
   ],
   "variable": [
-    { "key": "baseUrl", "value": "http://localhost:5000" },
+    { "key": "baseUrl", "value": "http://https://qa-backend-fak5.onrender.com" },
     { "key": "jwt", "value": "" },
     { "key": "test_plan_id", "value": "" },
     { "key": "requirement_id", "value": "" },

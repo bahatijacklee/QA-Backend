@@ -124,7 +124,7 @@
   "variable": [
     {
       "key": "base_url",
-      "value": "http://localhost:5000"
+      "value": "http://https://qa-backend-fak5.onrender.com"
     }
   ]
 }
